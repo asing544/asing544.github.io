@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Neon Cyber Battle</title>
+<title>Sports Battle Arena</title>
 
 <style>
 
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color:#e0f7ff;
+    background:linear-gradient(to bottom, #0f5132, #031d14);
+    color:white;
 }
 
 .header{
-    background: linear-gradient(90deg, #00f5ff, #ff00c8);
+    background:#14532d;
     text-align:center;
     padding:20px;
-    font-size:22px;
+    font-size:24px;
+    font-weight:bold;
     letter-spacing:2px;
-    text-shadow:0 0 10px #00f5ff;
+    border-bottom:4px solid #22c55e;
 }
 
 .start-screen{
@@ -28,7 +29,7 @@ body{
 
 .battle-screen{
     display:none;
-    background:#020617;
+    background:#022c22;
     padding:30px;
 }
 
@@ -43,40 +44,40 @@ body{
 #start-btn{
     display:inline-block;
     padding:15px 30px;
-    background: linear-gradient(45deg, #00f5ff, #ff00c8);
+    background:#22c55e;
     color:black;
     text-decoration:none;
-    border-radius:10px;
+    border-radius:8px;
     font-weight:bold;
-    box-shadow:0 0 20px #00f5ff;
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
     transition:0.3s;
 }
 
 #start-btn:hover{
+    background:#16a34a;
     transform:scale(1.1);
-    box-shadow:0 0 30px #ff00c8;
 }
 
 .hp-bar{
     height:20px;
-    background: linear-gradient(90deg, #00ff88, #00ffaa);
+    background:linear-gradient(to right, #22c55e, #4ade80);
     margin:10px 0;
     border-radius:10px;
-    box-shadow:0 0 10px #00ff88;
+    border:2px solid #14532d;
 }
 
 .menu{
-    background:#0f172a;
+    background:#14532d;
     padding:20px;
     width:260px;
-    border-radius:12px;
-    box-shadow:0 0 20px rgba(0,255,255,0.2);
+    border-radius:10px;
+    border:2px solid #22c55e;
 }
 
 button{
-    background:#111827;
-    color:#00f5ff;
-    border:1px solid #00f5ff;
+    background:#022c22;
+    color:#4ade80;
+    border:2px solid #22c55e;
     padding:8px 15px;
     border-radius:6px;
     cursor:pointer;
@@ -84,21 +85,21 @@ button{
 }
 
 button:hover{
-    background:#00f5ff;
+    background:#22c55e;
     color:black;
 }
 
 select{
-    background:#111827;
-    color:#00f5ff;
-    border:1px solid #00f5ff;
+    background:#022c22;
+    color:#4ade80;
+    border:2px solid #22c55e;
     padding:5px;
     border-radius:5px;
 }
 
 img{
-    border-radius:12px;
-    box-shadow:0 0 15px rgba(0,255,255,0.3);
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 </style>
@@ -107,44 +108,44 @@ img{
 <body>
 
 <section class="header">
-<h1>⚡ NEON CYBER BATTLE ⚡</h1>
+<h1>🏟️ SPORTS ARENA SHOWDOWN 🏟️</h1>
 </section>
 
 <section class="start-screen">
-<img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80"
-style="width:80%;" alt="space">
+<img src="https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?auto=format&fit=crop&w=1200&q=80"
+style="width:80%;" alt="stadium">
 
 <br><br>
 
-<a id="start-btn" href="#battle">ENTER BATTLE</a>
+<a id="start-btn" href="#battle">START MATCH</a>
 </section>
 
 <section id="battle" class="battle-screen">
 
-<h2>⚠ A CYBER PIRATE HAS BREACHED YOUR SYSTEM ⚠</h2>
+<h2>🔥 OPPONENT TEAM ENTERS THE FIELD 🔥</h2>
 
-<img src="https://images.unsplash.com/photo-1518364538800-6bae3c2ea0f2?auto=format&fit=crop&w=200&q=80"
-alt="enemy">
+<img src="https://images.unsplash.com/photo-1521417531039-3c5e98e6fae9?auto=format&fit=crop&w=200&q=80"
+alt="opponent">
 
-<p>HP: 10 / 10</p>
+<p>Stamina: 10 / 10</p>
 
 <div class="hp-bar"></div>
 
-<img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=200&q=80"
-alt="player ship">
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=200&q=80"
+alt="player">
 
 <div class="menu">
 <ol>
-<li><button>⚡ LASER STRIKE</button></li>
+<li><button>⚽ ATTACK</button></li>
 <li>
-ITEM
+GEAR
 <select>
-<option>💊 MED KIT</option>
-<option>🛡 SHIELD</option>
+<option>💧 ENERGY DRINK</option>
+<option>🛡 DEFENSE KIT</option>
 </select>
 </li>
-<li><button>🔁 SWITCH</button></li>
-<li><button>🏃 RETREAT</button></li>
+<li><button>🔄 SUBSTITUTE</button></li>
+<li><button>🏃 FORFEIT</button></li>
 </ol>
 </div>
 
