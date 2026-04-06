@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Card</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 500px;
+            height: 750px;
+            background-color: #f3f4f6;
+            padding: 36px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            box-sizing: border-box;
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .card h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            color: #111827;
+            font-size: 52px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            font-size: 20px;
+            color: #1f2937;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .card a {
+            text-decoration: none;
+        }
+
+        .card button {
+            background-color: #111827;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card button:hover {
+            background-color: #374151;
+            transform: scale(1.05);
+        }
+
+        .card button:active {
+            background-color: #000000;
+            transform: scale(0.98);
+        }
+
+        .card a:hover button {
+            box-shadow: 0 0 10px rgba(17, 24, 39, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1516934024742-b461fba47600?auto=format&fit=crop&w=1200&q=80" alt="Raccoons in the forest">
+
+        <h1>Wrath of the Raccoon</h1>
+
+        <p>
+            Summon up to 4 raccoons with 2d6 HP that can attack on your turn, steal items from nearby targets,
+            and spread chaos across the battlefield with their wild energy.
+        </p>
+
+        <a href="https://www.dndbeyond.com/" target="_blank">
+            <button>Learn More</button>
+        </a>
+    </div>
+
+</body>
+</html>
