@@ -4,17 +4,439 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aadritya Singh | Portfolio</title>
-
-  
-  <link rel="stylesheet" href="portfolio.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-1: #06121f;
+      --bg-2: #0b1b2b;
+      --bg-3: #132238;
+      --card-bg: rgba(10, 19, 34, 0.62);
+      --card-border: rgba(148, 163, 184, 0.16);
+      --text: #e5eefc;
+      --muted: #9fb2c9;
+      --accent: #64d2ff;
+      --accent-2: #7c5cff;
+      --accent-3: #36f1cd;
+      --shadow: 0 18px 60px rgba(2, 8, 23, 0.38);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(100, 210, 255, 0.14), transparent 22%),
+        radial-gradient(circle at 85% 18%, rgba(124, 92, 255, 0.14), transparent 25%),
+        radial-gradient(circle at 70% 75%, rgba(54, 241, 205, 0.08), transparent 22%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3) 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.28;
+      z-index: -1;
+      animation: floatBlob 12s ease-in-out infinite;
+    }
+
+    body::before {
+      top: -100px;
+      left: -120px;
+      background: rgba(100, 210, 255, 0.35);
+    }
+
+    body::after {
+      bottom: -120px;
+      right: -100px;
+      background: rgba(124, 92, 255, 0.32);
+      animation-delay: 2s;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    a:hover {
+      color: #b6eeff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 24px 8%;
+      background:
+        linear-gradient(rgba(3, 10, 24, 0.35), rgba(3, 10, 24, 0.55)),
+        radial-gradient(circle at top left, rgba(54, 241, 205, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(124, 92, 255, 0.12), transparent 35%);
+      border-bottom: 1px solid var(--card-border);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 92%);
+      pointer-events: none;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 12px 36px rgba(100, 210, 255, 0.28);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 42px rgba(100, 210, 255, 0.4);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #d3deee;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-3));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero-content {
+      min-height: calc(100vh - 108px);
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 1.02;
+      margin-bottom: 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .intro {
+      max-width: 680px;
+      color: #d0dced;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 14px 35px rgba(95, 112, 255, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(10, 19, 34, 0.45);
+      color: var(--text);
+      border-color: rgba(159, 178, 201, 0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .card,
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .card:hover,
+    .hero-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(100, 210, 255, 0.28);
+      box-shadow: 0 22px 60px rgba(2, 8, 23, 0.48);
+    }
+
+    .card::before,
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    }
+
+    .card::after,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40% -55% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100, 210, 255, 0.12), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-card ul {
+      list-style: none;
+    }
+
+    .hero-card li {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+    }
+
+    .hero-card li:last-child {
+      border-bottom: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 72px 0;
+    }
+
+    .section {
+      margin-bottom: 72px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #f8fbff;
+      letter-spacing: -0.5px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .subtext {
+      color: var(--muted);
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(100, 210, 255, 0.1);
+      color: #aee9ff;
+      border: 1px solid rgba(100, 210, 255, 0.22);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .detail-list {
+      padding-left: 20px;
+    }
+
+    .detail-list li {
+      margin-bottom: 10px;
+    }
+
+    .contact-card p {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 26px;
+      border-top: 1px solid var(--card-border);
+      color: var(--muted);
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-5 {
+      animation-delay: 0.5s;
+    }
+
+    .delay-6 {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatBlob {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(14px, -10px, 0) scale(1.05);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .container {
+        padding: 56px 20px;
+      }
+
+      .card,
+      .hero-card {
+        padding: 22px;
+      }
+
+      .section h2 {
+        font-size: 1.7rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.7rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
   <header class="hero">
     <nav class="navbar">
       <div class="logo">AS</div>
@@ -29,81 +451,154 @@
     </nav>
 
     <div class="hero-content">
-      <div class="hero-text">
+      <div class="hero-text fade-up delay-1">
         <p class="eyebrow">Computer Science Student</p>
         <h1>Aadritya Singh</h1>
         <p class="intro">
           Junior at Arizona State University focused on software development, problem solving,
-          and building practical applications.
+          and building practical applications with modern web and programming tools.
         </p>
-
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">View Projects</a>
           <a href="#contact" class="btn btn-secondary">Contact Me</a>
         </div>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card fade-up delay-2">
         <h3>Quick Info</h3>
         <ul>
-          <li>Email: asing544@asu.edu</li>
-          <li>Phone: (602) 505-5188</li>
-          <li>Location: Tempe, AZ</li>
+          <li><strong>Email:</strong> asing544@asu.edu</li>
+          <li><strong>Phone:</strong> (602) 505-5188</li>
+          <li><strong>Location:</strong> Tempe, AZ</li>
+          <li><strong>University:</strong> Arizona State University</li>
         </ul>
       </div>
     </div>
   </header>
 
   <main class="container">
-
-    <section id="about" class="section">
+    <section id="about" class="section fade-up delay-1">
       <h2>About Me</h2>
       <div class="card">
         <p>
-          I am a Computer Science student looking for internship opportunities
-          where I can apply my skills and grow professionally.
+          I am a Computer Science student currently looking for internship opportunities where I can
+          apply my technical skills, gain hands-on experience, and contribute to meaningful projects.
+          I enjoy collaborating with teams, solving challenging problems, and creating solutions that
+          make a real impact.
         </p>
       </div>
     </section>
 
-    <section id="education" class="section">
+    <section id="education" class="section fade-up delay-2">
       <h2>Education</h2>
       <div class="card">
-        <h3>B.S. Computer Science</h3>
-        <p>Arizona State University</p>
+        <div class="item-header">
+          <div>
+            <h3>B.S. in Computer Science</h3>
+            <p class="subtext">Arizona State University • Tempe, AZ</p>
+          </div>
+          <span class="tag">Aug 2023 – Present</span>
+        </div>
+        <p><strong>Achievement:</strong> Dean's List, 4th semester</p>
+        <p><strong>Relevant Coursework:</strong> Object-Oriented Programming, Data Structures and Algorithms, Operating Systems, Computer Organization and Assembly Language Programming, Introduction to Software Engineering, Database Management, Linear Algebra.</p>
       </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="skills" class="section fade-up delay-3">
       <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="card">Java, Python, C++</div>
-        <div class="card">HTML, CSS, JavaScript</div>
-        <div class="card">SQL, APIs</div>
+        <div class="card">
+          <h3>Programming</h3>
+          <p>Java, Python, C/C++, JavaScript, SQL, HTML, CSS</p>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <p>Spring Boot, Flask, Node.js, Express.js, REST APIs, JSON, API development</p>
+        </div>
+        <div class="card">
+          <h3>AI / ML</h3>
+          <p>Pandas, NumPy, Matplotlib, OpenAI API, scikit-learn</p>
+        </div>
+        <div class="card">
+          <h3>Cloud / DevOps</h3>
+          <p>Linux/Unix, Git, Jenkins, GitHub Actions, CI/CD</p>
+        </div>
+        <div class="card">
+          <h3>Databases</h3>
+          <p>MySQL, MongoDB, SQLite</p>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>VS Code, IntelliJ IDEA, PyCharm, Eclipse, Linux, Windows</p>
+        </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="experience" class="section fade-up delay-4">
+      <h2>Experience</h2>
+      <div class="card">
+        <div class="item-header">
+          <div>
+            <h3>Software Engineering Intern</h3>
+            <p class="subtext">Nestingale</p>
+          </div>
+          <span class="tag">May 2025 – Aug 2025</span>
+        </div>
+        <ul class="detail-list">
+          <li>Built and maintained 15+ web pages using HTML and GitHub for version control.</li>
+          <li>Improved functionality, layout consistency, and user experience across devices.</li>
+          <li>Managed company social media accounts and scheduled 3–5 posts per week.</li>
+          <li>Worked with a cross-functional team, contributing 20+ commits through GitHub collaboration.</li>
+          <li>Improved website responsiveness and performance across desktop and mobile devices.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section fade-up delay-5">
       <h2>Projects</h2>
       <div class="projects-grid">
-        <div class="card">Discussion Platform</div>
-        <div class="card">Pokemon Game</div>
-        <div class="card">Compiler Project</div>
+        <article class="card">
+          <h3>Q&amp;A Discussion Platform</h3>
+          <p class="subtext">Java, JavaFX • May 2025</p>
+          <p>
+            Collaborated in a team of 5 to build a JavaFX-based discussion platform modeled after Ed Discussion.
+            Developed the application across 4 incremental mini-projects and created UML class and sequence diagrams
+            to refine the system architecture.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Pokemon Game</h3>
+          <p class="subtext">C, C++ • Dec 2024</p>
+          <p>
+            Independently designed and developed a fully functional Pokemon-style game across 8 mini-projects.
+            Implemented map generation, player movement, and turn-based battle mechanics with a strong focus on backend logic.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Recursive-Descent Parsing Compiler</h3>
+          <p class="subtext">C, C++ • Dec 2024</p>
+          <p>
+            Built a recursive-descent compiler for a custom language using C++11, supporting syntax parsing,
+            semantic analysis, execution, and detailed error detection for invalid program behavior.
+          </p>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section fade-up delay-6">
       <h2>Contact</h2>
-      <div class="card">
-        <p>Email: asing544@asu.edu</p>
+      <div class="card contact-card">
+        <p><strong>Email:</strong> <a href="mailto:asing544@asu.edu">asing544@asu.edu</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+16025055188">(602) 505-5188</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/aadritya-singh-2a4541309/" target="_blank">linkedin.com/in/aadritya-singh-2a4541309/</a></p>
       </div>
     </section>
-
   </main>
 
   <footer class="footer">
-    <p>© 2026 Aadritya Singh</p>
+    <p>© 2026 Aadritya Singh. Built with HTML & CSS.</p>
   </footer>
-
 </body>
 </html>
